@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\Team.cs" />
     <Compile Include="ICanJsonSerialisation.cs" />
     <Compile Include="ICanXmlSerialisation.cs" />
     <Compile Include="IEntity.cs" />
@@ -49,5 +50,6 @@
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -54,7 +54,8 @@ namespace PdfTools
                 { "archive", new ArchiveStrategy() },
                 { "combine", new CombineStrategy() },
             };
-            var op = strategies[action.ToLower()];
+            var op = strategies[action.ToLower()]; // KeyNotFoundExceptin?
+
             op.Start(args);
 
 #if DEBUG
