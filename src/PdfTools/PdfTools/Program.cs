@@ -37,25 +37,10 @@ namespace PdfTools
                 Console.WriteLine(arg);
             }
 
-            if (args.Length == 0)
-                throw new ArgumentException("at least an action is required");
-
-            var action = args[0];
-
-            var commands = new List<ICommand>() { new AddCodeCommand(), new ArchiveCommand(), new CombineCommand(), new CreateCommand(), new DownloadCommand() };
-
-            // This executes the first command and uses an "emptyCommand" when no command is found -instead of exception
-            var firstCommandToExecute = commands.FirstOrDefault(x => x.CanExecute(args)) ?? new EmptyCommand();
-            firstCommandToExecute.Execute(args);
-
-            // This executes all commands and throws an exception if no command was found
-            //if (commands.Count(x => x.CanExecute(args)) == 0)
-            //    throw new Exception("Command not found to execute");
-
-            //commands.ForEach(x=>
-            //{
-            //    if (x.CanExecute(args)) x.Execute(args);
-            //}); // LinQ
+            // lets use the composite command to execute all valid commands
+            var composite = new SimpleCompositeCommand();
+            if (composite.CanExecute(args))
+                composite.Execute(args);
 
 #if DEBUG
             Console.ReadKey();
