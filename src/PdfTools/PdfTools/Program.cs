@@ -8,7 +8,7 @@ using System.Net.Http;
 using iTextSharp.text.pdf;
 using NLog;
 using NUnit.Framework.Constraints;
-using PdfTools.Strategies;
+using PdfTools.Commands;
 using QRCoder;
 using Image = iTextSharp.text.Image;
 
@@ -42,17 +42,20 @@ namespace PdfTools
 
             var action = args[0];
 
-            // this is just temporary
-            var strategies = new Dictionary<string, IStrategy>()
-            {
-                { "create", new CreateStrategy() },
-                { "addcode", new AddCodeStrategy() },
-                { "download", new DownloadStrategy() },
-                { "archive", new ArchiveStrategy() },
-                { "combine", new CombineStrategy() },
-            };
-            var op = strategies[action.ToLower()];
-            op.Start(args);
+            var commands = new List<ICommand>() { new AddCodeCommand(), new ArchiveCommand(), new CombineCommand(), new CreateCommand(), new DownloadCommand() };
+
+            // This executes the first command and uses an "emptyCommand" when no command is found -instead of exception
+            var firstCommandToExecute = commands.FirstOrDefault(x => x.CanExecute(args)) ?? new EmptyCommand();
+            firstCommandToExecute.Execute(args);
+
+            // This executes all commands and throws an exception if no command was found
+            //if (commands.Count(x => x.CanExecute(args)) == 0)
+            //    throw new Exception("Command not found to execute");
+
+            //commands.ForEach(x=>
+            //{
+            //    if (x.CanExecute(args)) x.Execute(args);
+            //}); // LinQ
 
 #if DEBUG
             Console.ReadKey();

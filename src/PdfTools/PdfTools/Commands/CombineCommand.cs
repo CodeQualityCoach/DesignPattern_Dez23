@@ -1,15 +1,27 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-namespace PdfTools.Strategies
+namespace PdfTools.Commands
 {
-    public class CombineStrategy : IStrategy
+    public class CombineCommand : ICommand
     {
-        public void Start(string[] args)
+        public bool CanExecute(string[] context)
         {
-            CombineMultiplePDF(args.Skip(2).ToArray(), args[1]);
+            if (context.Length < 3) return false;
+            if (string.Compare(context[0], "combine", StringComparison.InvariantCultureIgnoreCase) != 0)
+                return false;
+
+            return true;
+        }
+
+        public void Execute(string[] context)
+        {
+            if (!CanExecute(context)) throw new ArgumentException("Command cannot be executed");
+
+            CombineMultiplePDF(context.Skip(2).ToArray(), context[1]);
         }
 
         private static void CombineMultiplePDF(string[] fileNames, string outFile)
