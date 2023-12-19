@@ -42,7 +42,10 @@ namespace PdfTools
 
             var action = args[0];
 
-            // this is just temporary
+            // this is just temporary. make me a factory with a
+            // "GetStrategy(action):IStrategy",
+            // "GetAllStrategies()":IEnumerable<IStrategy>,
+            // HasStrategyFor(action): Bool
             var strategies = new Dictionary<string, IStrategy>()
             {
                 { "create", new CreateStrategy() },

@@ -142,6 +142,7 @@
     <Compile Include="Strategies\CombineStrategy.cs" />
     <Compile Include="Strategies\CreateStrategy.cs" />
     <Compile Include="Strategies\DownloadStrategy.cs" />
+    <Compile Include="Strategies\EmptyStrategy.cs" />
     <Compile Include="Strategies\IStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
