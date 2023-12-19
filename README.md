@@ -1,2 +1,1 @@
-# Workshop-CleanCode-Template
-Template for the clean code workshop.
+# Workshop Design Patterns und ein bisschen Clean Code
