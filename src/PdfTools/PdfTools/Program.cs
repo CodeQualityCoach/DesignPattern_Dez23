@@ -20,6 +20,7 @@ namespace PdfTools
 
         public static void Main(string[] args)
         {
+            // Ok, wie können wir das Erstellen auslagern und abstrahieren?
             _logger = NLog.LogManager.GetCurrentClassLogger();
 
 #if DEBUG
@@ -54,7 +55,7 @@ namespace PdfTools
                 { "archive", new ArchiveStrategy() },
                 { "combine", new CombineStrategy() },
             };
-            var op = strategies[action.ToLower()]; // KeyNotFoundExceptin?
+            var op = strategies[action.ToLower()]; // KeyNotFoundException?
 
             op.Start(args);
 

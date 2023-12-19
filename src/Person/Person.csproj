@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\OfficeSetup.cs" />
     <Compile Include="Builder\Team.cs" />
     <Compile Include="ICanJsonSerialisation.cs" />
     <Compile Include="ICanXmlSerialisation.cs" />
