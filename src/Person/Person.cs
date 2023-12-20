@@ -20,7 +20,7 @@ namespace Person
 
             return new Person(Guid.NewGuid(), firstname, lastname, birthday);
         }
-        ,
+        
         private Person(Guid uuid, string firstName, string lastName, DateTime birthday)
         {
             Uuid = uuid;
