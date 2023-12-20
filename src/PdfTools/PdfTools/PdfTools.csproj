@@ -137,6 +137,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory\MarkdownStrategyFactory.cs" />
+    <Compile Include="Factory\IStrategyFactory.cs" />
+    <Compile Include="Factory\PdfStrategyFactory.cs" />
     <Compile Include="Strategies\AddCodeStrategy.cs" />
     <Compile Include="Strategies\ArchiveStrategy.cs" />
     <Compile Include="Strategies\CombineStrategy.cs" />

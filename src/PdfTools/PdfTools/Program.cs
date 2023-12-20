@@ -8,6 +8,7 @@ using System.Net.Http;
 using iTextSharp.text.pdf;
 using NLog;
 using NUnit.Framework.Constraints;
+using PdfTools.Factory;
 using PdfTools.Strategies;
 using QRCoder;
 using Image = iTextSharp.text.Image;
@@ -43,20 +44,9 @@ namespace PdfTools
 
             var action = args[0];
 
-            // this is just temporary. make me a factory with a
-            // "GetStrategy(action):IStrategy",
-            // "GetAllStrategies()":IEnumerable<IStrategy>,
-            // HasStrategyFor(action): Bool
-            var strategies = new Dictionary<string, IStrategy>()
-            {
-                { "create", new CreateStrategy() },
-                { "addcode", new AddCodeStrategy() },
-                { "download", new DownloadStrategy() },
-                { "archive", new ArchiveStrategy() },
-                { "combine", new CombineStrategy() },
-            };
-            var op = strategies[action.ToLower()]; // KeyNotFoundException?
-
+            //var factory = new PdfStrategyFactory();
+            var factory = new MarkdownStrategyFactory();
+            var op = factory.GetStrategy(action);
             op.Start(args);
 
 #if DEBUG
