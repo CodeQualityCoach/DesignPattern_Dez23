@@ -20,16 +20,16 @@ namespace Person
 
             return new Person(Guid.NewGuid(), firstname, lastname, birthday);
         }
-
-        private Person(Guid id, string firstName, string lastName, DateTime birthday)
+        ,
+        private Person(Guid uuid, string firstName, string lastName, DateTime birthday)
         {
-            Id = id;
+            Uuid = uuid;
             FirstName = firstName;
             LastName = lastName;
             Birthday = birthday;
         }
 
-        public Guid Id { get; set; }
+        public Guid Uuid { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime Birthday { get; }

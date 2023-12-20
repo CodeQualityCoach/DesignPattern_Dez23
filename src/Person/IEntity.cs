@@ -4,6 +4,6 @@ namespace Person
 {
     public interface IEntity
     {
-        Guid Id { get; set; }
+        Guid Uuid { get; set; }
     }
 }
