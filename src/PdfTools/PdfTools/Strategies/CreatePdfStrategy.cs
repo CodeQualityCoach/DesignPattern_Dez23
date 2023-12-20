@@ -6,7 +6,7 @@ using FSharp.Markdown.Pdf;
 
 namespace PdfTools.Strategies
 {
-    class CreateStrategy : IStrategy
+    class CreatePdfStrategy : IPdfStrategy
     {
         public void Start(string[] args)
         {

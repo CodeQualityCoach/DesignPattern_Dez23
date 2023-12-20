@@ -140,13 +140,13 @@
     <Compile Include="Factory\MarkdownStrategyFactory.cs" />
     <Compile Include="Factory\IStrategyFactory.cs" />
     <Compile Include="Factory\PdfStrategyFactory.cs" />
-    <Compile Include="Strategies\AddCodeStrategy.cs" />
-    <Compile Include="Strategies\ArchiveStrategy.cs" />
-    <Compile Include="Strategies\CombineStrategy.cs" />
-    <Compile Include="Strategies\CreateStrategy.cs" />
-    <Compile Include="Strategies\DownloadStrategy.cs" />
-    <Compile Include="Strategies\EmptyStrategy.cs" />
-    <Compile Include="Strategies\IStrategy.cs" />
+    <Compile Include="Strategies\AddCodePdfStrategy.cs" />
+    <Compile Include="Strategies\ArchivePdfStrategy.cs" />
+    <Compile Include="Strategies\CombinePdfStrategy.cs" />
+    <Compile Include="Strategies\CreatePdfStrategy.cs" />
+    <Compile Include="Strategies\DownloadPdfStrategy.cs" />
+    <Compile Include="Strategies\EmptyPdfStrategy.cs" />
+    <Compile Include="Strategies\IPdfStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

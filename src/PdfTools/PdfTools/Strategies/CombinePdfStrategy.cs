@@ -5,7 +5,7 @@ using iTextSharp.text.pdf;
 
 namespace PdfTools.Strategies
 {
-    public class CombineStrategy : IStrategy
+    public class CombinePdfStrategy : IPdfStrategy
     {
         public void Start(string[] args)
         {

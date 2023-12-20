@@ -1,6 +1,6 @@
 ﻿namespace PdfTools.Strategies
 {
-    public class AddCodeStrategy : IStrategy
+    public class AddCodePdfStrategy : IPdfStrategy
     {
         public void Start(string[] args)
         {

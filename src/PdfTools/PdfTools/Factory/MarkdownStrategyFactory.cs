@@ -10,19 +10,36 @@ namespace PdfTools.Factory
 {
     class MarkdownStrategyFactory : IStrategyFactory
     {
+        private readonly Dictionary<string, IMarkdownStrategy> _strategies;
+
+        public MarkdownStrategyFactory()
+        {
+            _strategies = new Dictionary<string, IMarkdownStrategy>()
+            {
+                {"convert", new ConvertMarkdownStrategy()}
+            };
+        }
         public IStrategy GetStrategy(string action)
         {
-            return new EmptyStrategy();
+            if (_strategies.ContainsKey(action))
+                return _strategies[action];
+
+            return new EmptyPdfStrategy();
         }
 
         public IEnumerable<IStrategy> GetAllStrategies()
         {
-            return Enumerable.Empty<IStrategy>();
+            return Enumerable.Empty<IPdfStrategy>();
         }
 
         public bool HasStrategyFor(string action)
         {
             return false;
+        }
+
+        public void Remove(IStrategy strategy)
+        {
+            IMarkdownStrategy strategyClone = (IMarkdownStrategy)strategy;
         }
     }
 }

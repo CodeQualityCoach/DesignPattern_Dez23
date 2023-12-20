@@ -1,21 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PdfTools.Strategies;
 
 namespace PdfTools.Factory
 {
     class PdfStrategyFactory : IStrategyFactory
     {
-        private readonly Dictionary<string, IStrategy> _strategies;
+        private readonly Dictionary<string, IPdfStrategy> _strategies;
 
         public PdfStrategyFactory()
         {
-            _strategies = new Dictionary<string, IStrategy>()
+            _strategies = new Dictionary<string, IPdfStrategy>()
             {
-                { "create", new CreateStrategy() },
-                { "addcode", new AddCodeStrategy() },
-                { "download", new DownloadStrategy() },
-                { "archive", new ArchiveStrategy() },
-                { "combine", new CombineStrategy() },
+                { "create", new CreatePdfStrategy() },
+                { "addcode", new AddCodePdfStrategy() },
+                { "download", new DownloadPdfStrategy() },
+                { "archive", new ArchivePdfStrategy() },
+                { "combine", new CombinePdfStrategy() },
             };
         }
 
@@ -24,7 +25,7 @@ namespace PdfTools.Factory
             if (_strategies.ContainsKey(action))
                 return _strategies[action];
 
-            return new EmptyStrategy();
+            return new EmptyPdfStrategy();
         }
 
         public IEnumerable<IStrategy> GetAllStrategies()
@@ -35,6 +36,11 @@ namespace PdfTools.Factory
         public bool HasStrategyFor(string action)
         {
             return _strategies.ContainsKey(action);
+        }
+
+        public void Remove(IStrategy strategy)
+        {
+            IPdfStrategy strategyClone = (IPdfStrategy)strategy;
         }
     }
 }

@@ -44,10 +44,14 @@ namespace PdfTools
 
             var action = args[0];
 
+            IStrategyFactory factory = new MarkdownStrategyFactory(); // new PdfStrategyFactory();
+            var s = new AddCodePdfStrategy();
+            factory.Remove(s);
+
             //var factory = new PdfStrategyFactory();
-            var factory = new MarkdownStrategyFactory();
-            var op = factory.GetStrategy(action);
-            op.Start(args);
+            ////var factory = new MarkdownStrategyFactory();
+            //var op = factory.GetStrategy(action);
+            //op.Start(args);
 
 #if DEBUG
             Console.ReadKey();

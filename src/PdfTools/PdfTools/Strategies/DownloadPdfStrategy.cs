@@ -3,7 +3,7 @@ using System.Net.Http;
 
 namespace PdfTools.Strategies
 {
-    public class DownloadStrategy : IStrategy
+    public class DownloadPdfStrategy : IPdfStrategy
     {
         public void Start(string[] args)
         {
