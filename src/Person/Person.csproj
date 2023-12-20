@@ -47,6 +47,8 @@
     <Compile Include="Builder\IBuilder.cs" />
     <Compile Include="Builder\OfficeSetup.cs" />
     <Compile Include="Builder\Team.cs" />
+    <Compile Include="Builder\TeamBuilder.cs" />
+    <Compile Include="Exceptions\TeamHasNoMemberException.cs" />
     <Compile Include="ICanJsonSerialisation.cs" />
     <Compile Include="ICanXmlSerialisation.cs" />
     <Compile Include="IEntity.cs" />
