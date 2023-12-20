@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\IBuilder.cs" />
+    <Compile Include="Builder\OfficeBuilder.cs" />
     <Compile Include="Builder\OfficeSetup.cs" />
     <Compile Include="Builder\Team.cs" />
     <Compile Include="Builder\TeamBuilder.cs" />

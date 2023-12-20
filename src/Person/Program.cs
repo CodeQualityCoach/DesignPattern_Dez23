@@ -15,8 +15,8 @@ namespace Person
 
             //var w = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(2));
 
-            //var builder = new OfficeBuilder();
-            var builder = new TeamBuilder();
+            var builder = new OfficeBuilder();
+            //var builder = new TeamBuilder();
 
             builder.AllowHomeOffice();
             builder.AddMember(Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000)));
