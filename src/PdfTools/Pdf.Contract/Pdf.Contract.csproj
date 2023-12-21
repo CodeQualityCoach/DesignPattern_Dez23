@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="EmptyPdfToolLogger.cs" />
     <Compile Include="IConsole.cs" />
+    <Compile Include="IHttpClient.cs" />
     <Compile Include="IPdfToolLogger.cs" />
     <Compile Include="NativeConsoleLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

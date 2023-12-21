@@ -1,4 +1,6 @@
-﻿namespace PdfTools.Strategies
+﻿using PdfTools.ToRefactor;
+
+namespace PdfTools.Strategies
 {
     public class ArchivePdfStrategy:IPdfStrategy
     {
