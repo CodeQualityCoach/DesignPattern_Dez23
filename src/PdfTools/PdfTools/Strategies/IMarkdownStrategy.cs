@@ -1,6 +1,6 @@
 ﻿namespace PdfTools.Strategies
 {
-    interface IPdfStrategy : IStrategy
+    interface IMarkdownStrategy : IStrategy
     {
     }
 }

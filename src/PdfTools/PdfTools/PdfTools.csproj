@@ -147,9 +147,12 @@
     <Compile Include="Strategies\CreatePdfStrategy.cs" />
     <Compile Include="Strategies\DownloadPdfStrategy.cs" />
     <Compile Include="Strategies\EmptyPdfStrategy.cs" />
+    <Compile Include="Strategies\IMarkdownStrategy.cs" />
     <Compile Include="Strategies\IPdfStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\IStrategy.cs" />
+    <Compile Include="Strategies\LoggingStrategyDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
