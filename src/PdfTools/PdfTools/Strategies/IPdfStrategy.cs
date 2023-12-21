@@ -12,12 +12,4 @@
     interface IMarkdownStrategy : IStrategy
     {
     }
-
-    class ConvertMarkdownStrategy : IMarkdownStrategy
-    {
-        public void Start(string[] args)
-        {
-            
-        }
-    }
 }

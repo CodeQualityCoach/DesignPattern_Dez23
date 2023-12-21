@@ -12,13 +12,13 @@ namespace Person
 
     public class Person : IEntity, IPerson, IPersister, ICanJsonSerialisation, ICanXmlSerialisation
     {
-        public static IPerson Create(string firstname, string lastname, DateTime birthday)
+        public static IPerson Create(string firstname, string lastname, DateTime birthday, Func<int, Guid> factory)
         {
             if (birthday > DateTime.Now) throw new ArgumentException("Geburtstag muss in der Vergangenheit liegen");
             if (firstname is null || firstname.Length < 2) throw new ArgumentException("Bissel Kurz für einen Vornamen");
             if (lastname is null || lastname.Length < 2) throw new ArgumentException("Bissel Kurz für einen Nachnamen");
 
-            return new Person(Guid.NewGuid(), firstname, lastname, birthday);
+            return new Person(factory(12), firstname, lastname, birthday);
         }
         
         private Person(Guid uuid, string firstName, string lastName, DateTime birthday)

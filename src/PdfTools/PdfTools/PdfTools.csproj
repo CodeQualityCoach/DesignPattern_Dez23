@@ -143,6 +143,7 @@
     <Compile Include="Strategies\AddCodePdfStrategy.cs" />
     <Compile Include="Strategies\ArchivePdfStrategy.cs" />
     <Compile Include="Strategies\CombinePdfStrategy.cs" />
+    <Compile Include="Strategies\ConvertMarkdownStrategy.cs" />
     <Compile Include="Strategies\CreatePdfStrategy.cs" />
     <Compile Include="Strategies\DownloadPdfStrategy.cs" />
     <Compile Include="Strategies\EmptyPdfStrategy.cs" />

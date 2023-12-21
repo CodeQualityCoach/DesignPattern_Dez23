@@ -49,12 +49,14 @@
     <Compile Include="Builder\OfficeSetup.cs" />
     <Compile Include="Builder\Team.cs" />
     <Compile Include="Builder\TeamBuilder.cs" />
+    <Compile Include="Builder\TeamDirector.cs" />
     <Compile Include="Exceptions\TeamHasNoMemberException.cs" />
     <Compile Include="ICanJsonSerialisation.cs" />
     <Compile Include="ICanXmlSerialisation.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IPersister.cs" />
     <Compile Include="IPerson.cs" />
+    <Compile Include="IUuidFactory.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

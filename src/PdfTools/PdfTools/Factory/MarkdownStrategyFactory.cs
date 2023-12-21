@@ -21,8 +21,8 @@ namespace PdfTools.Factory
         }
         public IStrategy GetStrategy(string action)
         {
-            if (_strategies.ContainsKey(action))
-                return _strategies[action];
+            if (_strategies.TryGetValue(action, out var strategy))
+                return strategy;
 
             return new EmptyPdfStrategy();
         }

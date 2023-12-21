@@ -40,7 +40,8 @@ namespace PdfTools.Factory
 
         public void Remove(IStrategy strategy)
         {
-            IPdfStrategy strategyClone = (IPdfStrategy)strategy;
+            // Hier kann es Probleme geben, wenn die Strategie nicht von dieser Abstract Factory erzeugt wurde
+            var strategyClone = (IPdfStrategy)strategy;
         }
     }
 }

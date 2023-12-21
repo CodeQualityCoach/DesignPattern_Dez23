@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Person.Builder
@@ -38,6 +39,12 @@ namespace Person.Builder
             if (_boss == null) _boss = _member.First(); // Primus inter Pares
 
             return new Team(_boss, _member.ToArray(), _customerSite, _allowHomeOffice);
+        }
+
+        public void AddFuncMember(Func<string, string, IPerson> factory)
+        {
+            var p = factory("THomas", "Ley");
+            _member.Add(p);
         }
     }
 }
