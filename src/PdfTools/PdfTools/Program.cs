@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -8,8 +7,6 @@ using System.Net.Http;
 using iTextSharp.text.pdf;
 using Pdf.Contract;
 using PdfTools.Factory;
-using PdfTools.Logging.NLog;
-using PdfTools.Strategies;
 using QRCoder;
 using Image = iTextSharp.text.Image;
 
@@ -24,20 +21,21 @@ namespace PdfTools
         {
 
             var logger = Factory.Create();
+            IConsole console = new ConsoleAdapter();
 
 #if DEBUG
             // just a hack in case you hit play in VS
             if (args == null || args.Length == 0)
             {
                 logger.Log(string.Join(", ", args ?? new string[] { }));
-                var arg = Console.ReadLine() ?? "help";
+                var arg = console.ReadLine() ?? "help";
                 args = arg.Split(',').Select(x => x.Trim()).ToArray();
             }
 #endif
 
             foreach (var arg in args)
             {
-                Console.WriteLine(arg);
+                console.WriteLine(arg);
             }
 
             if (args.Length == 0)
@@ -45,14 +43,9 @@ namespace PdfTools
 
             var action = args[0];
 
-            IStrategyFactory factory = new MarkdownStrategyFactory(); // new PdfStrategyFactory();
-            var s = new AddCodePdfStrategy();
-            factory.Remove(s);
-
-            //var factory = new PdfStrategyFactory();
-            ////var factory = new MarkdownStrategyFactory();
-            //var op = factory.GetStrategy(action);
-            //op.Start(args);
+            var factory = new PdfStrategyFactory();
+            var op = factory.GetStrategy(action);
+            op.Start(args);
 
 #if DEBUG
             Console.ReadKey();

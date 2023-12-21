@@ -134,17 +134,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory\MarkdownStrategyFactory.cs" />
     <Compile Include="Factory\IStrategyFactory.cs" />
     <Compile Include="Factory\PdfStrategyFactory.cs" />
     <Compile Include="Strategies\AddCodePdfStrategy.cs" />
     <Compile Include="Strategies\ArchivePdfStrategy.cs" />
     <Compile Include="Strategies\CombinePdfStrategy.cs" />
-    <Compile Include="Strategies\ConvertMarkdownStrategy.cs" />
     <Compile Include="Strategies\CreatePdfStrategy.cs" />
     <Compile Include="Strategies\DownloadPdfStrategy.cs" />
     <Compile Include="Strategies\EmptyPdfStrategy.cs" />
-    <Compile Include="Strategies\IMarkdownStrategy.cs" />
     <Compile Include="Strategies\IPdfStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
