@@ -20,7 +20,6 @@ namespace PdfTools.ToRefactor
         }
         public void Archive(string url)
         {
-
             var tmpTempFile = Path.GetTempFileName();
             var pdf = _httpClient.DownloadFile(url);
             File.WriteAllBytes(tmpTempFile, pdf);

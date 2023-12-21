@@ -10,7 +10,7 @@ namespace PdfTools.Strategies
 
         public DownloadPdfStrategy()
         {
-            _httpClient = new HttpClientFacade();
+            _httpClient = new HttpClientFacade(); 
         }
         public void Start(string[] args)
         {
