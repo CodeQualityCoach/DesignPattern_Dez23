@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfTools", "PdfTools\PdfTools.csproj", "{06B250B1-A41D-43BE-9305-6697271FBA16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pdf.Contract", "Pdf.Contract\Pdf.Contract.csproj", "{3BF29B6B-008C-467F-B446-40B5DD8167C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfTools.Logging.NLog", "PdfTools.Logging.NLog\PdfTools.Logging.NLog.csproj", "{2C1F7AF0-6B53-45F9-B037-0DF00D42F0D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{06B250B1-A41D-43BE-9305-6697271FBA16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06B250B1-A41D-43BE-9305-6697271FBA16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06B250B1-A41D-43BE-9305-6697271FBA16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF29B6B-008C-467F-B446-40B5DD8167C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF29B6B-008C-467F-B446-40B5DD8167C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF29B6B-008C-467F-B446-40B5DD8167C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF29B6B-008C-467F-B446-40B5DD8167C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C1F7AF0-6B53-45F9-B037-0DF00D42F0D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1F7AF0-6B53-45F9-B037-0DF00D42F0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1F7AF0-6B53-45F9-B037-0DF00D42F0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1F7AF0-6B53-45F9-B037-0DF00D42F0D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,9 +6,9 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using iTextSharp.text.pdf;
-using NLog;
-using NUnit.Framework.Constraints;
+using Pdf.Contract;
 using PdfTools.Factory;
+using PdfTools.Logging.NLog;
 using PdfTools.Strategies;
 using QRCoder;
 using Image = iTextSharp.text.Image;
@@ -17,18 +17,19 @@ namespace PdfTools
 {
     public class Program
     {
-        private static Logger _logger;
+        private static readonly IPdfToolLoggerFactory Factory = new NoLoggingPdfToolLoggerFactory();
+
 
         public static void Main(string[] args)
         {
-            // Ok, wie können wir das Erstellen auslagern und abstrahieren?
-            _logger = NLog.LogManager.GetCurrentClassLogger();
+
+            var logger = Factory.Create();
 
 #if DEBUG
             // just a hack in case you hit play in VS
             if (args == null || args.Length == 0)
             {
-                Console.WriteLine("Args (Comma Separated): ");
+                logger.Log(string.Join(", ", args ?? new string[] { }));
                 var arg = Console.ReadLine() ?? "help";
                 args = arg.Split(',').Select(x => x.Trim()).ToArray();
             }
