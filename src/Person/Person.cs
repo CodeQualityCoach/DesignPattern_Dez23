@@ -10,7 +10,7 @@ namespace Person
      ********************************************************/
 
 
-    public class Person : IEntity, IPerson, IPersister, ICanJsonSerialisation, ICanXmlSerialisation
+    public class Person : IEntity, IPerson, IPersister, IToFormatEntity
     {
         public static IPerson Create(string firstname, string lastname, DateTime birthday, Func<int, Guid> factory)
         {
@@ -44,18 +44,10 @@ namespace Person
             // Speichern der Daten in die Datei...
         }
 
-        public string ToJsonString()
+        // statt der ToFormat Methoden wird hier ein IToFormatVisitor akzeptiert
+        public void Accept(IToFormatVisitor visitor)
         {
-            // Zurückliefern der Daten als JSON-Zeichenkette...
-            var jsonString = "...";
-            return jsonString;
-        }
-
-        public string ToXmlString()
-        {
-            // Zurückliefern der Daten als XML-Zeichenkette...
-            var xmlString = "...";
-            return xmlString;
+            visitor.Visit(this); // this is the double dispatch
         }
     }
 }

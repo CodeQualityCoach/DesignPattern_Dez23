@@ -27,8 +27,13 @@ namespace Person
             var b = new TeamBuilder();
             b.AddFuncMember(Factory);
 
-            var p = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), GuidFactory);
-           // var p = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), i => Guid.NewGuid());
+            var p = (Person)Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), GuidFactory);
+
+            var v = new ToXmlVisitor();
+            var w = new ToJsonVisitor();
+            v.Visit(p);
+            p.Accept(v);
+            // var p = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), i => Guid.NewGuid());
         }
 
         private static IPerson Factory(string firstName, string lastName)
