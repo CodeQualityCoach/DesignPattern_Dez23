@@ -27,18 +27,50 @@ namespace Person
             var b = new TeamBuilder();
             b.AddFuncMember(Factory);
 
-            var p = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), GuidFactory);
-            var p2 = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), Guid.NewGuid);
+            // wir sind im composite, und das sind IHrOperation(s)
+            IHrOperation p1 = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), GuidFactory);
+            IHrOperation p2 = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), Guid.NewGuid);
+            IHrOperation p3 = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), Guid.NewGuid);
+            IHrOperation p4 = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), Guid.NewGuid);
+
+            var a = new HrOperationComposite() { Boss = p1 };
+            a.Member.Add(p2);
+            var a2 = new HrOperationComposite() { Boss = p2 };
+            a2.Member.Add(p3);
+            a2.Member.Add(p4);
+            
+            a.IncreaseSalary(0.05);
+
+            // this is the awesome part about composite
+            a.Member.Add(a2);
+            a.Member.Add(a);
+
+            a.IncreaseSalary(1);
         }
 
         private static IPerson Factory(string firstName, string lastName)
         {
-            return Person.Create(firstName, lastName, DateTime.Now.AddDays(-1000), i => Guid.NewGuid());
+            return Person.Create(firstName, lastName, DateTime.Now.AddDays(-1000), Guid.NewGuid);
         }
 
         private static Guid GuidFactory()
         {
             return Guid.NewGuid();
+        }
+    }
+
+    public class HrOperationComposite : IHrOperation
+    {
+        public List<IHrOperation> Member { get; set; } = new
+            List<IHrOperation>();
+
+        // das ist nicht "original" composite
+        public IHrOperation Boss { get; set; }
+
+        public void IncreaseSalary(double percent)
+        {
+            Boss?.IncreaseSalary(percent * 2);
+            Member.ForEach(x => x.IncreaseSalary(percent));
         }
     }
 }

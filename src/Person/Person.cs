@@ -10,9 +10,9 @@ namespace Person
      ********************************************************/
 
 
-    public class Person : IEntity, IPerson, IPersister, ICanJsonSerialisation, ICanXmlSerialisation
+    public class Person : IEntity, IPerson, IPersister, ICanJsonSerialisation, ICanXmlSerialisation, IHrOperation
     {
-        public static IPerson Create(string firstname, string lastname, DateTime birthday, Func<Guid> idFactory)
+        public static Person Create(string firstname, string lastname, DateTime birthday, Func<Guid> idFactory)
         {
             if (birthday > DateTime.Now) throw new ArgumentException("Geburtstag muss in der Vergangenheit liegen");
             if (firstname is null || firstname.Length < 2) throw new ArgumentException("Bissel Kurz für einen Vornamen");
@@ -56,6 +56,10 @@ namespace Person
             // Zurückliefern der Daten als XML-Zeichenkette...
             var xmlString = "...";
             return xmlString;
+        }
+
+        public void IncreaseSalary(double percent)
+        {
         }
     }
 }
