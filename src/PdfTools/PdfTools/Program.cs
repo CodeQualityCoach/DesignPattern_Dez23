@@ -38,7 +38,12 @@ namespace PdfTools
             }
 
             // lets use the composite command to execute all valid commands
-            var composite = new SimpleCompositeCommand();
+            var composite = new CompositeCommand();
+            composite.AddCommand(new CreateCommand());
+            composite.AddCommand(new DownloadCommand());
+            composite.AddCommand(new CompositeCommand());
+
+
             if (composite.CanExecute(args))
                 composite.Execute(args);
 

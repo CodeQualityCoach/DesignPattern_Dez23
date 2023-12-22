@@ -1,4 +1,6 @@
-﻿namespace Person
+﻿using System.Collections.Generic;
+
+namespace Person
 {
     /********************************************************
      * Aufgabe:
@@ -9,34 +11,48 @@
      ********************************************************/
 
 
-    public class Person : IEntity, IPerson, IPersister, ICanJsonSerialisation, ICanXmlSerialisation
+    public class Person : IEntity, IPerson, IElement
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public Person Spouse { get; set; }
+        public List<Person> Children { get; set; } = new List<Person>();
 
-        public void Load(string path)
+        public List<Pet> Pets { get; set; } = new List<Pet>();
+
+        public void Accept(IOpsVisitor visitor)
         {
-            // Lesen der Daten aus der Datei...
+            visitor.DoVisit(this);
+
+            this.Spouse?.Accept(visitor);
+
+            foreach (var child in Children)
+            {
+                child.Accept(visitor);
+            }
+
+            foreach (var pet in Pets)
+            {
+                pet.Accept(visitor);
+            }
+        }
+    }
+
+    public interface IElement
+    {
+        void Accept(IOpsVisitor visitor);
+    }
+
+    public class Pet : IEntity, IElement 
+    {
+        public string Nickname { get; set; }
+
+        public void Accept(IOpsVisitor visitor)
+        {
+            visitor.DoVisit(this);
         }
 
-        public void Save(string path)
-        {
-            // Speichern der Daten in die Datei...
-        }
-
-        public string ToJsonString()
-        {
-            // Zurückliefern der Daten als JSON-Zeichenkette...
-            var jsonString = "...";
-            return jsonString;
-        }
-
-        public string ToXmlString()
-        {
-            // Zurückliefern der Daten als XML-Zeichenkette...
-            var xmlString = "...";
-            return xmlString;
-        }
+        public int Id { get; set; }
     }
 }

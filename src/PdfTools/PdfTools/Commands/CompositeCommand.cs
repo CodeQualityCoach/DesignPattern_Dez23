@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace PdfTools.Commands
 {
-    internal class SimpleCompositeCommand : ICommand
+    internal class CompositeCommand : ICommand
     {
-        private readonly List<ICommand> _commands;
+        private List<ICommand> _commands;
 
-        public SimpleCompositeCommand()
+        public CompositeCommand()
         {
-            _commands = new List<ICommand>() { new AddCodeCommand(), new ArchiveCommand(), new CombineCommand(), new CreateCommand(), new DownloadCommand() };
-
+            _commands = new List<ICommand>()
+            {
+            };
         }
+
+        public void AddCommand(ICommand command) { _commands.Add(command); }
+
         public bool CanExecute(string[] context)
         {
             return _commands.Any(x => x.CanExecute(context));
