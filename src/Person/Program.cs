@@ -28,7 +28,7 @@ namespace Person
             b.AddFuncMember(Factory);
 
             var p = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), GuidFactory);
-           // var p = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), i => Guid.NewGuid());
+            var p2 = Person.Create("Thomas", "Ley", DateTime.Now.AddDays(-1000), Guid.NewGuid);
         }
 
         private static IPerson Factory(string firstName, string lastName)
@@ -36,7 +36,7 @@ namespace Person
             return Person.Create(firstName, lastName, DateTime.Now.AddDays(-1000), i => Guid.NewGuid());
         }
 
-        private static Guid GuidFactory(int arg)
+        private static Guid GuidFactory()
         {
             return Guid.NewGuid();
         }
