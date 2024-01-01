@@ -4,36 +4,32 @@ using System.Linq;
 
 namespace Person.Builder
 {
-    class TeamBuilder : IBuilder
+    class TeamBuilder : IAwesomeBuilder, IAwesomeBuilderWithBoss, IAwesomeBuilderWithBossAndMember, IAwesomeBuilderDefined
     {
         private readonly List<IPerson> _member = new List<IPerson>();
         private IPerson _boss;
         private bool _allowHomeOffice = false;
         private bool _customerSite = false;
 
-        public void AddMember(IPerson member)
-        {
-            _member.Add(member);
-        }
 
-        public void AssignBoss(IPerson boss)
-        {
-            _boss = boss;
-        }
+        //public void AssignBoss(IPerson boss)
+        //{
+        //    _boss = boss;
+        //}
 
-        public void AllowHomeOffice()
-        {
-            _allowHomeOffice = true;
-            _customerSite = false;
-        }
+        //public void AllowHomeOffice()
+        //{
+        //    _allowHomeOffice = true;
+        //    _customerSite = false;
+        //}
 
-        public void WorksAtCustomerSite()
-        {
-            _allowHomeOffice = false;
-            _customerSite = true;
-        }
+        //public void WorksAtCustomerSite()
+        //{
+        //    _allowHomeOffice = false;
+        //    _customerSite = true;
+        //}
 
-        public Team Build()
+        Team IAwesomeBuilderDefined.Build()
         {
             if (_member.Count == 0) throw new TeamHasNoMemberException();
             if (_boss == null) _boss = _member.First(); // Primus inter Pares
@@ -41,10 +37,29 @@ namespace Person.Builder
             return new Team(_boss, _member.ToArray(), _customerSite, _allowHomeOffice);
         }
 
-        public void AddFuncMember(Func<string, string, IPerson> factory)
+        public IAwesomeBuilderWithBoss AssignBoss(IPerson boss)
         {
-            var p = factory("THomas", "Ley");
-            _member.Add(p);
+            throw new NotImplementedException();
+        }
+
+        IAwesomeBuilderWithBossAndMember IAwesomeBuilderWithBoss.AddMember(IPerson member)
+        {
+            throw new NotImplementedException();
+        }
+
+        IAwesomeBuilderDefined IAwesomeBuilderWithBossAndMember.AllowHomeOffice()
+        {
+            throw new NotImplementedException();
+        }
+
+        IAwesomeBuilderDefined IAwesomeBuilderWithBossAndMember.WorksAtCustomerSite()
+        {
+            throw new NotImplementedException();
+        }
+
+        IAwesomeBuilderWithBossAndMember IAwesomeBuilderWithBossAndMember.AddMember(IPerson member)
+        {
+            throw new NotImplementedException();
         }
     }
 }
